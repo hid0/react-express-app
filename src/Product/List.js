@@ -15,16 +15,19 @@ const List = () => {
         if (status === "success") {
           setProducts(data);
         } else {
-          alert(message);
+          // alert(message);
+          console.log(message);
         }
       })
       .catch((error) => {
-        alert(error);
+        console.log(error.response.data);
+        // alert(error);
       });
   }, []);
   return (
     <>
       <h2>Halaman List Produk</h2>
+      <a href="/product/create">+ CREATE</a>
       <table>
         <thead>
           <tr>
@@ -38,7 +41,11 @@ const List = () => {
             products.map((product, index) => {
               return (
                 <tr key={index}>
-                  <td>{product.name}</td>
+                  <td>
+                    <a href={`/product/single/${product._id}`}>
+                      {product.name}
+                    </a>
+                  </td>
                   <td className="center">{product.price}</td>
                   <td className="center">{product.stock}</td>
                 </tr>
