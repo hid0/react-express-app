@@ -82,3 +82,11 @@ form > input,
 form > select {
   padding: 5px;
 }
+
+.h-5 {
+  height: 20px;
+}
+
+.w-5 {
+  width: 20px;
+}

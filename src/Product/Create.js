@@ -1,5 +1,5 @@
+import * as Axios from "axios";
 import React, { useState } from "react";
-import { Axios } from "axios";
 import { useHistory } from "react-router-dom";
 
 const Create = () => {
@@ -26,13 +26,16 @@ const Create = () => {
       );
       const { status, message } = response.data;
       if (status === "success") {
-        console.log(message);
+        alert(message);
         history.push("/product");
       } else {
-        console.log(message);
+        alert(message);
       }
+      // console.log(status);
+      // console.log(message);
     } catch (error) {
-      console.log("network error");
+      console.log(error);
+      alert("network error");
     }
   };
   return (
@@ -40,50 +43,42 @@ const Create = () => {
       <h2>Halaman form create produk</h2>
 
       <form>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={product.name}
-            size={50}
-            onChange={(e) => handleChange(e, "name")}
-          />
-        </div>
-        <div>
-          <label htmlFor="price">Price</label>
-          <input
-            type="number"
-            name="price"
-            id="price"
-            value={product.price}
-            onChange={(e) => handleChange(e, "price")}
-          />
-        </div>
-        <div>
-          <label htmlFor="stock">Stock</label>
-          <input
-            type="number"
-            name="stock"
-            id="stock"
-            value={product.stock}
-            size={30}
-            onChange={(e) => handleChange(e, "stock")}
-          />
-        </div>
-        <div>
-          <label htmlFor="status">Status</label>
-          <select
-            name="status"
-            id="status"
-            value={product.status}
-            onChange={(e) => handleChange(e, "status")}
-          >
-            <option value={false}>off</option>
-            <option value={true}>on</option>
-          </select>
-        </div>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          size={50}
+          value={product.name}
+          onChange={(e) => handleChange(e, "name")}
+        />
+        <label htmlFor="price">Price</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          value={product.price}
+          onChange={(e) => handleChange(e, "price")}
+        />
+        <label htmlFor="stock">Stock</label>
+        <input
+          type="number"
+          name="stock"
+          id="stock"
+          size={30}
+          value={product.stock}
+          onChange={(e) => handleChange(e, "stock")}
+        />
+        <label htmlFor="status">Status</label>
+        <select
+          name="status"
+          id="status"
+          value={product.status}
+          onChange={(e) => handleChange(e, "status")}
+        >
+          <option value={false}>off</option>
+          <option value={true}>on</option>
+        </select>
         <div>
           <button onClick={handleSubmit}>submit</button>
         </div>
