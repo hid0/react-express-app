@@ -24,6 +24,7 @@ const List = () => {
         // alert(error);
       });
   }, []);
+
   return (
     <>
       <h2>Halaman List Produk</h2>
